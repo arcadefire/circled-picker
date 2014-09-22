@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="app_name">CircledPicker</string>
+    <string name="defaultLineColor">#1abc9c</string>
+    <string name="defaultSubLineColor">#7f8c8d</string>
+
+</resources>
