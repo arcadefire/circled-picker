@@ -20,6 +20,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
@@ -112,6 +113,7 @@ public class CircledPicker extends View {
 
     private void updateCirle(float angle) {
         mCurrentSweep = angle;
+
         if(mCurrentSweep - mLastAngle < -VALUE_THRESHOLD
                 && !mIsFilled
                 && !mIsEmpty) {
@@ -123,10 +125,10 @@ public class CircledPicker extends View {
         }
 
         if(mCurrentSweep < 360
-                && mCurrentSweep > 330
+                && mCurrentSweep > 300
                 && mIsFilled) {
             mIsFilled = false;
-        } else if(mCurrentSweep < 30
+        } else if(mCurrentSweep < 60
                 && mCurrentSweep > 0
                 && mIsEmpty) {
             mIsEmpty = false;
@@ -136,10 +138,11 @@ public class CircledPicker extends View {
             mCurrentSweep = 359.99f;
         } else if(mIsEmpty) {
             mCurrentSweep = 0;
+        } else {
+            mLastAngle = mCurrentSweep;
         }
 
         mCurrentValue = getMultiply(((mCurrentSweep + 0.01f) * mMaxValue) / 360);
-        mLastAngle = mCurrentSweep;
     }
 
     @Override
@@ -159,6 +162,7 @@ public class CircledPicker extends View {
                     break;
                 case MotionEvent.ACTION_DOWN:
                     mDownX = event.getX();
+                    mIsFilled = mIsEmpty = false;
                     break;
                 case MotionEvent.ACTION_UP:
                 case MotionEvent.ACTION_CANCEL:
