@@ -242,7 +242,7 @@ public class CircledPicker extends View {
         mPaint.setAlpha(255);
         mPaint.setShader(null);
         if(mTextSize == 0) {
-            mPaint.setTextSize((float) (mMidY * .35));
+            mPaint.setTextSize((float) (mMidX * .3));
         } else {
             mPaint.setTextSize(mTextSize);
         }
