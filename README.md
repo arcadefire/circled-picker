@@ -7,7 +7,7 @@ CircledPicker is an awesome, simple circular picker for Android. It can display 
 Usage
 ----
 
-In order to use CircledPicker in a project, import it in your AndroidStudio project as module, and then declare it into your layout:
+In order to use CircledPicker in your project, import it as module and then declare into your XML layout:
 
 ```sh
 <org.angmarch.circledpicker.CircledPicker
@@ -20,16 +20,15 @@ In order to use CircledPicker in a project, import it in your AndroidStudio proj
 </org.angmarch.circledpicker.CircledPicker>
 ```
 
-Don't forget to declare the correct namespace in the root tag of the layout too:
+Don't forget to import the correct namespace in the root tag of your layout too:
 ```sh
 xmlns:app="http://schemas.android.com/apk/res-auto"
 ```
 
-Then you can customize CircledPicker more varying these parameters:
-
-* textColor
-* textSize
-* lineColor
-* subLineColor
-* thickness
+Then you can customize CircledPicker more with:
+* app:textColor
+* app:textSize
+* app:lineColor
+* app:subLineColor
+* app:thickness
 
