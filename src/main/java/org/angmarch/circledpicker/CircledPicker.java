@@ -123,10 +123,10 @@ public class CircledPicker extends View {
         }
 
         if(mCurrentSweep < 360
-                && mCurrentSweep > 340
+                && mCurrentSweep > 330
                 && mIsFilled) {
             mIsFilled = false;
-        } else if(mCurrentSweep < 20
+        } else if(mCurrentSweep < 30
                 && mCurrentSweep > 0
                 && mIsEmpty) {
             mIsEmpty = false;
