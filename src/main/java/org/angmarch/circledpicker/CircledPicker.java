@@ -45,12 +45,12 @@ public class CircledPicker extends View {
     private float mDownX;
     private float mMaxValue;
     private float mStep;
+    private float mTextSize;
     private boolean mIsFilled;
     private boolean mIsEmpty;
     private int mMidX;
     private int mMidY;
     private int mThickness;
-    private int mTextSize;
     private int mTouchSlop;
     private int mRadius;
     private int mInnerRadius;
@@ -245,11 +245,7 @@ public class CircledPicker extends View {
         mPaint.reset();
         mPaint.setAlpha(255);
         mPaint.setShader(null);
-        if(mTextSize == 0) {
-            mPaint.setTextSize((float) (mMidX * .3));
-        } else {
-            mPaint.setTextSize(mTextSize);
-        }
+        mPaint.setTextSize(mTextSize);
         mPaint.setColor(Color.parseColor(mTextColor));
 
         switch (mPickerMode) {
@@ -376,6 +372,9 @@ public class CircledPicker extends View {
             mRadius = mMidY;
         }
 
+        if(mTextSize == 0) {
+            mTextSize = mRadius * .3f;
+        }
         mInnerRadius = mRadius - mThickness;
         mArcRect.left = mMidX - mRadius;
         mArcRect.top = mMidY - mRadius;
