@@ -31,4 +31,5 @@ Then you can customize CircledPicker more with:
 * app:lineColor
 * app:subLineColor
 * app:thickness
+* app:innerThickness
 
