@@ -8,7 +8,6 @@ import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -20,7 +19,6 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
@@ -51,6 +49,7 @@ public class CircledPicker extends View {
     private int mMidX;
     private int mMidY;
     private int mThickness;
+    private int mInnerThickness;
     private int mTouchSlop;
     private int mRadius;
     private int mInnerRadius;
@@ -320,7 +319,8 @@ public class CircledPicker extends View {
         mTextSize = typedArray.getDimensionPixelSize(R.styleable.CircledPicker_textSize, 0);
         mThickness = typedArray.getDimensionPixelSize(R.styleable.CircledPicker_thickness,
                 (int) MeasureUtils.convertDpToPixel(context, 5));
-
+        mInnerThickness = mThickness - typedArray.getDimensionPixelSize(R.styleable.CircledPicker_innerThickness,
+                (int) MeasureUtils.convertDpToPixel(context, 1));
         pickerMode = typedArray.getString(R.styleable.CircledPicker_pickerMode);
 
         if(pickerMode != null) {
@@ -350,15 +350,15 @@ public class CircledPicker extends View {
     private void setCirclesBoundingBoxes() {
         mPath.reset();
         // Set the shadow circle's bounding box
-        mShadowRect.left = mMidX - mRadius + 5;
-        mShadowRect.top = mMidY - mRadius + 5;
-        mShadowRect.right = mMidX + mRadius - 5;
-        mShadowRect.bottom = mMidY + mRadius - 5;
+        mShadowRect.left = mMidX - mRadius + mInnerThickness;
+        mShadowRect.top = mMidY - mRadius + mInnerThickness;
+        mShadowRect.right = mMidX + mRadius - mInnerThickness;
+        mShadowRect.bottom = mMidY + mRadius - mInnerThickness;
         // Set the picker circle's bounding box
-        mShadowInnerRect.left = mMidX - mInnerRadius - 5;
-        mShadowInnerRect.top = mMidY - mInnerRadius - 5;
-        mShadowInnerRect.right = mMidX + mInnerRadius + 5;
-        mShadowInnerRect.bottom = mMidY + mInnerRadius + 5;
+        mShadowInnerRect.left = mMidX - mInnerRadius - mInnerThickness;
+        mShadowInnerRect.top = mMidY - mInnerRadius - mInnerThickness;
+        mShadowInnerRect.right = mMidX + mInnerRadius + mInnerThickness;
+        mShadowInnerRect.bottom = mMidY + mInnerRadius + mInnerThickness;
     }
 
     @Override
