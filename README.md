@@ -3,6 +3,7 @@ CircledPicker
 
 CircledPicker is an awesome, simple circular picker for Android. It can display value in four formats: hours, seconds, percentage and numeric, and it provides a basic set of parameters to customize.
 
+![alt tag](https://lh6.googleusercontent.com/j2TFK7peMMXrVz0OXzxpxsAAMLEalvgepn59b6gu9GpquKXzucCBoRhpltOs12Tas-GhKvKsMBs=w2424-h1072)
 
 Usage
 ----
