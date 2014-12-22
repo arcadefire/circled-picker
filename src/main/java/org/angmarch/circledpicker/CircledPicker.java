@@ -53,9 +53,9 @@ public class CircledPicker extends View {
     private int mTouchSlop;
     private int mRadius;
     private int mInnerRadius;
-    private String mLineColor;
-    private String mSubLineColor;
-    private String mTextColor;
+    private int mLineColor;
+    private int mSubLineColor;
+    private int mTextColor;
 
     public static enum PickerMode {
         HOURS_AND_SECONDS,
@@ -245,7 +245,7 @@ public class CircledPicker extends View {
         mPaint.setAlpha(255);
         mPaint.setShader(null);
         mPaint.setTextSize(mTextSize);
-        mPaint.setColor(Color.parseColor(mTextColor));
+        mPaint.setColor(mTextColor);
 
         switch (mPickerMode) {
             case TIME_OF_DAY:
@@ -277,7 +277,7 @@ public class CircledPicker extends View {
         mPath.arcTo(mArcRect, 270, mCurrentSweep);
         mPath.arcTo(mArcInnerRect, 270 + mCurrentSweep, -mCurrentSweep);
         mPath.close();
-        mPaint.setColor(Color.parseColor(mLineColor));
+        mPaint.setColor(mLineColor);
         canvas.drawPath(mPath, mPaint);
     }
 
@@ -285,7 +285,7 @@ public class CircledPicker extends View {
         mPath.arcTo(mShadowRect, 0, 359.9f);
         mPath.arcTo(mShadowInnerRect, 359.9f, -359.9f);
         mPath.close();
-        mPaint.setColor(Color.parseColor(mSubLineColor));
+        mPaint.setColor(mSubLineColor);
         canvas.drawPath(mPath, mPaint);
     }
 
@@ -305,15 +305,9 @@ public class CircledPicker extends View {
         ViewConfiguration viewConfiguration = ViewConfiguration.get(context);
         String pickerMode;
 
-        mLineColor = typedArray.getString(R.styleable.CircledPicker_lineColor) == null
-                ? context.getString(R.string.defaultLineColor)
-                    : typedArray.getString(R.styleable.CircledPicker_lineColor);
-        mSubLineColor = typedArray.getString(R.styleable.CircledPicker_subLineColor) == null
-                ? context.getString(R.string.defaultSubLineColor)
-                    : typedArray.getString(R.styleable.CircledPicker_subLineColor);
-        mTextColor = typedArray.getString(R.styleable.CircledPicker_textColor) == null
-                ? context.getString(R.string.defaultSubLineColor)
-                    : typedArray.getString(R.styleable.CircledPicker_textColor);
+        mLineColor = typedArray.getColor(R.styleable.CircledPicker_lineColor, R.color.defaultLineColor);
+        mSubLineColor = typedArray.getColor(R.styleable.CircledPicker_subLineColor, R.color.defaultSubLineColor);
+        mTextColor = typedArray.getColor(R.styleable.CircledPicker_textColor, R.color.defaultLineColor);
         mStep = typedArray.getInteger(R.styleable.CircledPicker_step, 1);
         mMaxValue = typedArray.getInteger(R.styleable.CircledPicker_maxValue, 100);
         mTextSize = typedArray.getDimensionPixelSize(R.styleable.CircledPicker_textSize, 0);

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="defaultLineColor">#1abc9c</color>
+    <color name="defaultSubLineColor">#7f8c8d</color>
+</resources>
