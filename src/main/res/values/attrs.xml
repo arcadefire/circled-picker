@@ -7,7 +7,7 @@
         <attr name="subLineColor" format="color" />
         <attr name="maxValue" format="integer" />
         <attr name="step" format="integer" />
-        <attr name="thickness" format="dimension" />
+        <attr name="outerThickness" format="dimension" />
         <attr name="innerThickness" format="dimension" />
         <attr name="pickerMode" format="string" />
     </declare-styleable>
