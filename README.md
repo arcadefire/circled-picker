@@ -1,3 +1,6 @@
+This project is archived and is no longer maintained.
+=========
+
 CircledPicker
 =========
 
